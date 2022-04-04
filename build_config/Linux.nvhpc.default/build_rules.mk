@@ -201,11 +201,12 @@ ESMF_OPENMP_CXXLINKOPTS    += -mp
 # OpenACC compiler and linker flags (the -Minfo just there for debugging)
 #
 ESMF_OPENACCDEFAULT = ON
-ESMF_OPENACC_F90COMPILEOPTS += -acc -Minfo
-ESMF_OPENACC_CXXCOMPILEOPTS += -acc -Minfo
-#ESMF_OPENACC_F90LINKOPTS    += -acc -Minfo #TODO: understand why this breaks link
-ESMF_OPENACC_F90LINKOPTS    += -Minfo
-ESMF_OPENACC_CXXLINKOPTS    += -acc -Minfo
+ESMF_OPENACC_F90COMPILEOPTS += -acc -Minfo=all,intensity
+ESMF_OPENACC_CXXCOMPILEOPTS += -acc -Minfo=all,intensity
+ESMF_OPENACC_F90LINKOPTS    += -acc -Minfo=all,intensity
+ESMF_OPENACC_CXXLINKOPTS    += -acc -Minfo=all,intensity
+# Must turn OFF shared library support or else will failing linking executables
+ESMF_SHARED_LIB_BUILD   = OFF
 
 ############################################################
 # Need this until the file convention is fixed (then remove these two lines)
