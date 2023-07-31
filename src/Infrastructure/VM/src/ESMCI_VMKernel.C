@@ -682,8 +682,6 @@ void VMK::finalize(int finalizeMpi){
     delete [] cid[i];
   delete [] cid;
   delete [] ssiLocalPetList;
-  // finalize the MPI tool interface
-  MPI_T_finalize();
   // conditionally finalize MPI
   int finalized;
   MPI_Finalized(&finalized);
@@ -695,6 +693,9 @@ void VMK::finalize(int finalizeMpi){
     if (finalizeMpi)
       MPI_Finalize();
   }
+  // finalize the MPI tool interface
+  // do this _after_ MPI_Finalize() or else Darshan dies with SEGV (not clear why)
+  MPI_T_finalize();
 }
 
 
