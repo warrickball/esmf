@@ -693,9 +693,12 @@ void VMK::finalize(int finalizeMpi){
     if (finalizeMpi)
       MPI_Finalize();
   }
-  // finalize the MPI tool interface
-  // do this _after_ MPI_Finalize() or else Darshan dies with SEGV (not clear why)
-  MPI_T_finalize();
+  MPI_Finalized(&finalized);
+  if (finalized){
+    // finalize the MPI tool interface
+    // do this _after_ MPI_Finalize() or else Darshan dies with SEGV (not clear why)
+    MPI_T_finalize();
+  }
 }
 
 
