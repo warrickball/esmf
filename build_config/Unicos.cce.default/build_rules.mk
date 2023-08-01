@@ -62,10 +62,10 @@ ESMF_CXXCOMPILECPPFLAGS += -DESMF_NO_POSIXIPC
 ############################################################
 # OpenMP compiler and linker flags
 #
-ESMF_OPENMP_F90COMPILEOPTS += -fopenmp
-ESMF_OPENMP_CXXCOMPILEOPTS += -fopenmp
-ESMF_OPENMP_F90LINKOPTS    += -fopenmp
-ESMF_OPENMP_CXXLINKOPTS    += -fopenmp
+ESMF_OPENMP_F90COMPILEOPTS += -homp
+ESMF_OPENMP_CXXCOMPILEOPTS += -homp
+ESMF_OPENMP_F90LINKOPTS    += -homp
+ESMF_OPENMP_CXXLINKOPTS    += -homp
 
 ############################################################
 # OpenACC compiler and linker flags
@@ -123,3 +123,9 @@ ESMF_NOWEBSERVTESTING = TRUE
 # Override default C preprocessor on this platform
 #
 ESMF_CPPDEFAULT       = gcc -E -P -x c
+
+############################################################
+# Override default C & C++ standards flags on this platform
+#
+ESMF_CXXSTDFLAG = -hst=c++$(ESMF_CXXSTD)
+ESMF_CSTDFLAG = -hstd=c$(ESMF_CSTD)
