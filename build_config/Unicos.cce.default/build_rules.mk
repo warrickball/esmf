@@ -127,5 +127,5 @@ ESMF_CPPDEFAULT       = gcc -E -P -x c
 ############################################################
 # Override default C & C++ standards flags on this platform
 #
-ESMF_CXXSTDFLAG = -hst=c++$(ESMF_CXXSTD)
+ESMF_CXXSTDFLAG = -hstd=c++$(ESMF_CXXSTD)
 ESMF_CSTDFLAG = -hstd=c$(ESMF_CSTD)
